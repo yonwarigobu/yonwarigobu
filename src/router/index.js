@@ -5,7 +5,6 @@ import LoginApp from "../views/LoginApp.vue"
 import PostApp from "../views/PostApp.vue"
 import MypageApp from "../views/MypageApp.vue"
 
-
 const routes = [
   {
     path: "/",
@@ -22,12 +21,11 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/AboutApp.vue"),
   },
   {
-
     path: "/post",
     name: "post",
     component: PostApp,
   },
-
+  {
     path: "/login",
     name: "LoginApp",
     component: LoginApp,
@@ -38,7 +36,6 @@ const routes = [
     name: "MypageApp",
     component: MypageApp,
   },
-
 ]
 
 const router = createRouter({
