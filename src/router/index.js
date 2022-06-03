@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router"
 import HomeApp from "../views/HomeApp.vue"
+
 import LoginApp from "../views/LoginApp.vue"
 import PostApp from "../views/PostApp.vue"
 import MypageApp from "../views/MypageApp.vue"
+
 
 const routes = [
   {
@@ -20,20 +22,23 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/AboutApp.vue"),
   },
   {
+
+    path: "/post",
+    name: "post",
+    component: PostApp,
+  },
+
     path: "/login",
     name: "LoginApp",
     component: LoginApp,
   },
-  {
-    path: "/post",
-    name: "PostApp",
-    component: PostApp,
-  },
+
   {
     path: "/mypage",
     name: "MypageApp",
     component: MypageApp,
   },
+
 ]
 
 const router = createRouter({
