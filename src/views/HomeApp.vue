@@ -1,18 +1,24 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="etsuran">
+    <p v-for="tweet in tweets" :key="tweet.id">
+      {{ tweet }}
+    </p>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue"
-
+import { collection, getDoc } from "firebase/firestore"
+import { db } from ".firebase"
 export default {
-  name: "HomeApp",
-  components: {
-    HelloWorld,
-  },
+ data(){
+   return{
+     tweetee:[]
+   }
+ }
+ created(){
+   getDoc(collection(db, "tweet")).then(snapshot)=>{
+     snapshot.forEach((doc)=>{
+       this.tweetee.push({id:doc,id})
+     })
 }
 </script>
