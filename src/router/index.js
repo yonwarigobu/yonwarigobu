@@ -1,7 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router"
 import HomeApp from "../views/HomeApp.vue"
-
-import LoginApp from "../views/LoginApp.vue"
 import PostApp from "../views/PostApp.vue"
 import MypageApp from "../views/MypageApp.vue"
 
@@ -25,12 +23,6 @@ const routes = [
     name: "post",
     component: PostApp,
   },
-  {
-    path: "/login",
-    name: "LoginApp",
-    component: LoginApp,
-  },
-
   {
     path: "/mypage",
     name: "MypageApp",
