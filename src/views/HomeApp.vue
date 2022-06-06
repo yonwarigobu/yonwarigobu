@@ -16,9 +16,11 @@ export default {
    }
  }
  created(){
-   getDoc(collection(db, "tweet")).then(snapshot)=>{
+   getDoc(collection(db, "tweet")).then(snapshot) => {
      snapshot.forEach((doc)=>{
-       this.tweetee.push({id:doc,id})
+       this.tweetee.push({id:doc.id})
      })
+   }
+ }
 }
 </script>
