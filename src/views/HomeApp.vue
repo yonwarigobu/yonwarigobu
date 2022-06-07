@@ -2,7 +2,7 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
-    <LoginHome />
+    <LoginHome v-if="isLogin"></LoginHome>
   </div>
 </template>
 
@@ -16,6 +16,12 @@ export default {
   components: {
     HelloWorld,
     LoginHome,
+  },
+  data() {
+    return {
+      isLogin: false,
+      userData: null,
+    }
   },
 }
 </script>
