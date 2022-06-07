@@ -12,7 +12,7 @@ export default {
   name: "login",
   data() {
     return {
-      msg: "ログイン作成中",
+      msg: "ログイン",
     }
   },
   methods: {
