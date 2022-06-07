@@ -1,6 +1,6 @@
 <template>
   <div class="etsuran">
-    <p v-for="tweet in tweets" :key="tweet.id">
+    <p id="etsuran" v-for="tweet in tweets" :key="tweet.id">
       {{ tweet }}
     </p>
   </div>
@@ -10,17 +10,18 @@
 import { collection, getDoc } from "firebase/firestore"
 import { db } from ".firebase"
 export default {
- data(){
-   return{
-     tweetee:[]
-   }
- }
- created(){
-   getDoc(collection(db, "tweet")).then(snapshot) => {
-     snapshot.forEach((doc)=>{
-       this.tweetee.push({id:doc.id})
-     })
-   }
- }
+  data() {
+    return {
+      tweetee: [],
+    }
+  },
+  created() {
+    getDoc(collection(db, "tweet")).then((snapshot) => {
+      snapshot.forEach((doc) => {
+        this.tweetee.push({ id: doc.id })
+      })
+    })
+  },
 }
 </script>
+<style></style>
