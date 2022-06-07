@@ -1,8 +1,9 @@
 <template>
   <div class="etsuran">
     <p id="etsuran" v-for="tweet in tweets" :key="tweet.id">
-      {{ tweet }}
+      {{ tweet.text }}
     </p>
+    <p>みえてる？</p>
   </div>
 </template>
 
