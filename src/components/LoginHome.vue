@@ -23,6 +23,7 @@ export default {
         .then((result) => {
           const user = result.user
           console.log(user)
+          this.$router.push("/home")
         })
         .catch((error) => {
           window.alert(error)
