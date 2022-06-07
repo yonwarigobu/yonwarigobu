@@ -8,7 +8,7 @@
 
 <script>
 import { collection, getDoc } from "firebase/firestore"
-import { db } from ".firebase"
+import { db } from "../firebase.js"
 export default {
   data() {
     return {
