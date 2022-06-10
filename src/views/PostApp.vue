@@ -3,12 +3,18 @@
     <h1>投稿ページ</h1>
   </div>
 
-  <div class="home__wrapper">
-    <submit-form />
+  <div class="form__wrapper">
+    <textarea
+      class="form__textarea"
+      v-model="text"
+      placeholder="いまどうしてる？"
+    />
+    <div class="form__buttons">
+      <button v-on:click="postTweet" class="form__submit-button">投稿</button>
+    </div>
   </div>
 
   <div class="app">
-    <button v-on:click="postTweet">投稿</button>
     <!-- 変更点１ -->
     <div>
       <p v-for="tweet in tweets" :key="tweet.id">
@@ -22,16 +28,14 @@
 </template>
 
 <script>
-import SubmitForm from "../components/SubmitForm.vue"
 /* 変更点１ */
 import { collection, addDoc, getDocs } from "firebase/firestore"
 import { db } from "../firebase"
 
 export default {
-  components: { SubmitForm },
-
   data() {
     return {
+      text: "",
       /* 変更点２ */
       tweets: [
         // {
