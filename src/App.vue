@@ -1,13 +1,19 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-
-    <router-link to="/post">Post</router-link>|
-    <router-link to="/mypage">Mypage</router-link>|
-    <router-link to="/logout">Logout</router-link>
+    <HeaderApp></HeaderApp>
   </div>
   <router-view />
 </template>
+
+<script>
+import { HeaderApp } from "@/components/HeaderApp.vue"
+
+export default {
+  components: {
+    HeaderApp,
+  },
+}
+</script>
 
 <style>
 #app {

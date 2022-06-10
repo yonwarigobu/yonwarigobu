@@ -1,12 +1,9 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
+  <router-link to="/">Home</router-link> |
 
-    <router-link to="/post">Post</router-link>|
-    <router-link to="/mypage">Mypage</router-link>|
-    <router-link to="/logout">Logout</router-link>
-  </div>
-  <router-view />
+  <router-link to="/post">Post</router-link>|
+  <router-link to="/mypage">Mypage</router-link>|
+  <router-link to="/logout">Logout</router-link>
 </template>
 
 <script></script>

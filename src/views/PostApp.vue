@@ -6,7 +6,7 @@
   <div class="form__wrapper">
     <textarea
       class="form__textarea"
-      v-model="text"
+      v-model="kansou"
       placeholder="いまどうしてる？"
     />
     <div class="form__buttons">
@@ -18,7 +18,7 @@
     <!-- 変更点１ -->
     <div>
       <p v-for="tweet in tweets" :key="tweet.id">
-        {{ tweet.text }}
+        {{ tweet.kansou }}
         {{ tweet.place }}
         {{ tweet.people }}
         {{ tweet.money }}
@@ -35,7 +35,7 @@ import { db } from "../firebase"
 export default {
   data() {
     return {
-      text: "",
+      kansou: "",
       /* 変更点２ */
       tweets: [
         // {
@@ -48,7 +48,7 @@ export default {
   methods: {
     postTweet() {
       const tweet = {
-        text: "旅行の詳細を投稿しました。",
+        kansou: this.kansou,
 
         money: 30000,
 
