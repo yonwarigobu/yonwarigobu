@@ -7,7 +7,22 @@
     <textarea
       class="form__textarea"
       v-model="kansou"
-      placeholder="いまどうしてる？"
+      placeholder="旅行どうだった？"
+    />
+    <textarea
+      class="form__textarea"
+      v-model="place"
+      placeholder="場所を入力してね！"
+    />
+    <textarea
+      class="form__textarea"
+      v-model="people"
+      placeholder="人数を入力してね！"
+    />
+    <textarea
+      class="form__textarea"
+      v-model="money"
+      placeholder="費用を入力してね！"
     />
     <div class="form__buttons">
       <button v-on:click="postTweet" class="form__submit-button">投稿</button>
@@ -36,6 +51,9 @@ export default {
   data() {
     return {
       kansou: "",
+      place: "",
+      people: "",
+      money: "",
       /* 変更点２ */
       tweets: [
         // {
@@ -50,11 +68,11 @@ export default {
       const tweet = {
         kansou: this.kansou,
 
-        money: 30000,
+        money: this.money + "円",
 
-        place: "北海道",
+        place: this.place,
 
-        people: 5,
+        people: this.people + "人",
       }
       addDoc(collection(db, "tweets"), tweet).then((ref) => {
         this.tweets.push({
