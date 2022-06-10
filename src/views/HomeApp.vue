@@ -1,18 +1,27 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="etsuran">
+    <div id="etsuran" v-for="hoge in hogee" :key="hoge">
+      {{ hoge.text }}
+    </div>
   </div>
 </template>
-
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue"
-
+import { collection, getDocs } from "firebase/firestore"
+import { db } from "../firebase.js"
 export default {
-  name: "HomeApp",
-  components: {
-    HelloWorld,
+  data() {
+    return {
+      feedback: "",
+      hogee: [],
+    }
+  },
+  created() {
+    getDocs(collection(db, "hoge")).then((snapshot) => {
+      snapshot.forEach((doc) => {
+        this.hogee.push({ id: doc.id, ...doc.data() })
+      })
+    })
   },
 }
 </script>
+<style></style>
