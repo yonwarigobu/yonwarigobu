@@ -1,19 +1,14 @@
 <template>
-  <div>
-    <HeaderApp></HeaderApp>
+  <div id="nav">
+    <router-link to="/">Home</router-link> |
+
+    <router-link to="/post">Post</router-link>|
+    <router-link to="/mypage">Mypage</router-link>|
+    <router-link to="/logout">Logout</router-link>
   </div>
-  <router-view />
 </template>
 
-<script>
-import HeaderApp from "@/components/HeaderApp.vue"
-
-export default {
-  components: {
-    HeaderApp,
-  },
-}
-</script>
+<script></script>
 
 <style>
 #app {
@@ -34,6 +29,6 @@ export default {
 }
 
 #nav a.router-link-exact-active {
-  color: #ae2a13;
+  color: #42b983;
 }
 </style>
