@@ -6,11 +6,6 @@
   <div class="form__wrapper">
     <textarea
       class="form__textarea"
-      v-model="kansou"
-      placeholder="旅行どうだった？"
-    />
-    <textarea
-      class="form__textarea"
       v-model="place"
       placeholder="場所を入力してね！"
     />
@@ -21,8 +16,33 @@
     />
     <textarea
       class="form__textarea"
+      v-model="relationships"
+      placeholder="どのような人と行ったかを入力してね！"
+    />
+    <textarea
+      class="form__textarea"
+      v-model="season"
+      placeholder="行った日時(何月)を入力してね！"
+    />
+    <textarea
+      class="form__textarea"
+      v-model="kikan"
+      placeholder="期間(何泊何日か)を入力してね！"
+    />
+    <textarea
+      class="form__textarea"
+      v-model="purpose"
+      placeholder="目的を入力してね！"
+    />
+    <textarea
+      class="form__textarea"
       v-model="money"
       placeholder="費用を入力してね！"
+    />
+    <textarea
+      class="form__textarea"
+      v-model="kansou"
+      placeholder="その他、旅行などの感想を入力してね！"
     />
     <div class="form__buttons">
       <button v-on:click="postTweet" class="form__submit-button">投稿</button>
@@ -34,9 +54,14 @@
     <div>
       <p v-for="tweet in tweets" :key="tweet.id">
         {{ tweet.kansou }}
+
         {{ tweet.place }}
         {{ tweet.people }}
         {{ tweet.money }}
+        {{ tweet.purpose }}
+        {{ tweet.relationships }}
+        {{ tweet.season }}
+        {{ tweet.kikan }}
       </p>
     </div>
   </div>
@@ -54,6 +79,11 @@ export default {
       place: "",
       people: "",
       money: "",
+      purpose: "",
+      relationships: "",
+      season: "",
+      kikan: "",
+
       /* 変更点２ */
       tweets: [
         // {
@@ -73,6 +103,14 @@ export default {
         place: this.place,
 
         people: this.people + "人",
+
+        purpose: this.purpose,
+
+        relationships: this.relationships,
+
+        season: this.season,
+
+        kikan: this.kikan,
       }
       addDoc(collection(db, "tweets"), tweet).then((ref) => {
         this.tweets.push({
