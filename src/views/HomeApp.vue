@@ -1,7 +1,10 @@
 <template>
-  <div class="etsuran">
-    <div id="etsuran" v-for="hoge in hogee" :key="hoge">
-      {{ hoge.text }}
+  <div class="etsuranbox">
+    <div id="etsuran" v-for="tweet in tweetArray" :key="tweet">
+      <div>場所{{ tweet.place }}</div>
+      <div>人数{{ tweet.people }}</div>
+      <div>出費{{ tweet.moneyS }}</div>
+      <div>感想{{ tweet.text }}</div>
     </div>
   </div>
 </template>
@@ -12,13 +15,13 @@ export default {
   data() {
     return {
       feedback: "",
-      hogee: [],
+      tweetArray: [],
     }
   },
   created() {
-    getDocs(collection(db, "hoge")).then((snapshot) => {
+    getDocs(collection(db, "tweets")).then((snapshot) => {
       snapshot.forEach((doc) => {
-        this.hogee.push({ id: doc.id, ...doc.data() })
+        this.tweetArray.push({ id: doc.id, ...doc.data() })
       })
     })
   },
