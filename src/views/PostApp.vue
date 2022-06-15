@@ -1,4 +1,5 @@
 <template>
+  <HeaderApp></HeaderApp>
   <div class="post">
     <h1>投稿ページ</h1>
   </div>
@@ -44,35 +45,23 @@
       v-model="kansou"
       placeholder="その他、旅行などの感想を入力してね！"
     />
+    <input type="file" @change="fileUpload" />
     <div class="form__buttons">
       <button v-on:click="postTweet" class="form__submit-button">投稿</button>
-    </div>
-  </div>
-
-  <div class="app">
-    <!-- 変更点１ -->
-    <div>
-      <p v-for="tweet in tweets" :key="tweet.id">
-        {{ tweet.kansou }}
-
-        {{ tweet.place }}
-        {{ tweet.people }}
-        {{ tweet.money }}
-        {{ tweet.purpose }}
-        {{ tweet.relationships }}
-        {{ tweet.season }}
-        {{ tweet.kikan }}
-      </p>
     </div>
   </div>
 </template>
 
 <script>
-/* 変更点１ */
-import { collection, addDoc, getDocs } from "firebase/firestore"
+import { collection, addDoc } from "firebase/firestore"
 import { db } from "../firebase"
+import HeaderApp from "@/components/HeaderApp.vue"
 
 export default {
+  components: {
+    HeaderApp,
+  },
+
   data() {
     return {
       kansou: "",
@@ -84,13 +73,7 @@ export default {
       season: "",
       kikan: "",
 
-      /* 変更点２ */
-      tweets: [
-        // {
-        //   id: "0GwoGZuhTNhqHQDBeiVW",
-        //   text: "こんにちは、ツイートの本文です。"
-        // }
-      ],
+      tweets: [],
     }
   },
   methods: {
@@ -120,18 +103,36 @@ export default {
       })
     },
   },
+  /**
+  //    * イメージ画像をアップロード.
+  //    */
+  //   fileUpload(event: any) {
+  //     //アップロードしたい画像の情報を取得。
+  //     const file = event.target.files[0]
+  //     //画像ファイルのURLを取得。
+  //     this.img_url = URL.createObjectURL(file)
+  //     //"files"は③で作成したフォルダ名
+  //     //Firebase storageに画像ファイルを送信。
+  //     const storageRef = ref(storage, "files/" + file.name)
 
-  /* 変更点３ */
-  created() {
-    getDocs(collection(db, "tweets")).then((snapshot) => {
-      snapshot.forEach((doc) => {
-        this.tweets.push({
-          id: doc.id,
-          ...doc.data(),
-        })
-      })
-    })
-  },
+  //     //Firebaseにデータを適切に送るために必要なコード
+  //     uploadBytes(storageRef, file).then((snapshot) => {
+  //       console.log("blobかfileをアップロード", snapshot)
+  //     })
+  //   },
+  // },
+
+  // /* 変更点３ */
+  // created() {
+  //   getDocs(collection(db, "tweets")).then((snapshot) => {
+  //     snapshot.forEach((doc) => {
+  //       this.tweets.push({
+  //         id: doc.id,
+  //         ...doc.data(),
+  //       })
+  //     })
+  //   })
+  // },
 }
 </script>
 
