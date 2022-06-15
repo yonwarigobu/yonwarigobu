@@ -31,7 +31,7 @@ const routes = [
   },
   {
     path: "/",
-    name: "loginApp",
+    name: "LoginApp",
     component: LoginApp,
   },
 ]

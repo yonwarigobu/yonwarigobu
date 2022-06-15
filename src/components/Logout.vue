@@ -9,7 +9,7 @@
 import { getAuth, signOut } from "firebase/auth"
 
 export default {
-  name: "Logout",
+  name: "LogoutApp",
   data() {
     return {
       msg: "ログアウト",

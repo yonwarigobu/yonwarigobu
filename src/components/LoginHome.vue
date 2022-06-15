@@ -9,7 +9,7 @@
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth"
 
 export default {
-  name: "login",
+  name: "LoginApp",
   data() {
     return {
       msg: "ログイン",
