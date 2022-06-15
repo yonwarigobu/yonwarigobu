@@ -1,4 +1,5 @@
 <template>
+  <HeaderApp></HeaderApp>
   <div class="post">
     <h1>投稿ページ</h1>
   </div>
@@ -71,8 +72,13 @@
 /* 変更点１ */
 import { collection, addDoc, getDocs } from "firebase/firestore"
 import { db } from "../firebase"
+import HeaderApp from "@/components/HeaderApp.vue"
 
 export default {
+  components: {
+    HeaderApp,
+  },
+
   data() {
     return {
       kansou: "",
