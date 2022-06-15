@@ -2,8 +2,11 @@
   <div class="etsuran">
     <div class="etsuranbox" v-for="tweet in tweetArray" :key="tweet">
       <div class="infoContainer1">
-        <div class="info">場所：{{ tweet.place }}</div>
-        <div class="info">人数：{{ tweet.people }}</div>
+        <div class="info">場所：</div>
+        <span class="inputInfo">{{ tweet.place }}</span>
+        <div class="info">人数：</div>
+        <span class="inputInfo">{{ tweet.people }}</span
+        >>
         <div class="info">出費：{{ tweet.moneyS }}</div>
         <div class="info">目的：{{ tweet.purpose }}</div>
         <div class="info">期間：{{ tweet.period }}</div>
@@ -56,5 +59,6 @@ export default {
   left: 200px;
   margin: 20px;
   text-align: left;
+  font-weight: 600;
 }
 </style>
