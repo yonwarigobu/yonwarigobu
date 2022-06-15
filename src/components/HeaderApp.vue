@@ -2,8 +2,8 @@
   <div id="nav">
     <router-link to="/home">Home</router-link> |
 
-    <router-link to="/post">Post</router-link>|
-    <router-link to="/mypage">Mypage</router-link>|
+    <router-link to="/post">Post</router-link> |
+    <!-- <router-link to="/mypage">Mypage</router-link>| -->
     <router-link to="/logout">Logout</router-link>
   </div>
 </template>
