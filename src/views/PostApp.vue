@@ -45,9 +45,12 @@
       v-model="kansou"
       placeholder="その他、旅行などの感想を入力してね！"
     />
-    <input type="file" @change="fileUpload" />
+    <input type="file" ref="postImage" @change="uploadFile" />
     <div class="form__buttons">
       <button v-on:click="postTweet" class="form__submit-button">投稿</button>
+    </div>
+    <div v-if="url">
+      <img :src="url" />
     </div>
   </div>
 </template>
@@ -72,8 +75,8 @@ export default {
       relationships: "",
       season: "",
       kikan: "",
-
       tweets: [],
+      url: "",
     }
   },
   methods: {
@@ -102,6 +105,11 @@ export default {
         })
       })
     },
+    uploadFile() {
+      const file = this.$refs.postImage.files[0]
+      this.url = URL.createObjectURL(file)
+      this.$refs.postImage.value = ""
+    },
   },
   /**
   //    * イメージ画像をアップロード.
@@ -115,14 +123,13 @@ export default {
   //     //Firebase storageに画像ファイルを送信。
   //     const storageRef = ref(storage, "files/" + file.name)
 
-  //     //Firebaseにデータを適切に送るために必要なコード
+  //    // Firebaseにデータを適切に送るために必要なコード
   //     uploadBytes(storageRef, file).then((snapshot) => {
   //       console.log("blobかfileをアップロード", snapshot)
   //     })
   //   },
   // },
 
-  // /* 変更点３ */
   // created() {
   //   getDocs(collection(db, "tweets")).then((snapshot) => {
   //     snapshot.forEach((doc) => {
