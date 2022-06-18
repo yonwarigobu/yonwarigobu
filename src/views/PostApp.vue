@@ -9,12 +9,17 @@
       class="form__textarea"
       v-model="place"
       placeholder="場所を入力してね！"
-    />
+    >
+    </textarea>
     <textarea
       class="form__textarea"
       v-model="people"
       placeholder="人数を入力してね！"
-    />
+    >
+     <option value="aaa">1</option>
+      <option value="iii">2</option>
+      <option value="uuu">3</option>
+    </textarea>
     <textarea
       class="form__textarea"
       v-model="relationships"
@@ -81,11 +86,11 @@ export default {
       const tweet = {
         kansou: this.kansou,
 
-        money: this.money + "円",
+        money: this.money,
 
         place: this.place,
 
-        people: this.people + "人",
+        people: this.people,
 
         purpose: this.purpose,
 
@@ -140,6 +145,13 @@ export default {
 .home__wrapper {
   margin: 0 auto;
   max-width: 600px;
-  background-color: #ccc;
+  background-color: #ccccff;
+}
+.form__submit-button {
+  margin: 0 auto;
+  width: 80px;
+  height: 40px;
+  border-radius: 10px 10px 10px 10px;
+  background-color: #ccccff;
 }
 </style>
