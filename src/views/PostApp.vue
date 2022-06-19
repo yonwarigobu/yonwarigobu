@@ -52,6 +52,7 @@
     <div v-if="url">
       <img :src="url" />
     </div>
+    <div>{{ url }}</div>
   </div>
 </template>
 
@@ -106,7 +107,7 @@ export default {
       }
       const file = this.$refs.postImage.files[0]
       const storage = getStorage()
-      const storageRef = ref(storage, file)
+      const storageRef = ref(storage, file.name)
       const uploadTask = uploadBytesResumable(storageRef, file)
       uploadTask.on(
         "state_changed",
@@ -148,38 +149,8 @@ export default {
     uploadFile() {
       const file = this.$refs.postImage.files[0]
       this.url = URL.createObjectURL(file)
-      this.$refs.postImage.value = ""
     },
   },
-  /**
-  //    * イメージ画像をアップロード.
-  //    */
-  //   fileUpload(event: any) {
-  //     //アップロードしたい画像の情報を取得。
-  //     const file = event.target.files[0]
-  //     //画像ファイルのURLを取得。
-  //     this.img_url = URL.createObjectURL(file)
-  //     //"files"は③で作成したフォルダ名
-  //     //Firebase storageに画像ファイルを送信。
-  //     const storageRef = ref(storage, "files/" + file.name)
-
-  //    // Firebaseにデータを適切に送るために必要なコード
-  //     uploadBytes(storageRef, file).then((snapshot) => {
-  //       console.log("blobかfileをアップロード", snapshot)
-  //     })
-  //   },
-  // },
-
-  // created() {
-  //   getDocs(collection(db, "tweets")).then((snapshot) => {
-  //     snapshot.forEach((doc) => {
-  //       this.tweets.push({
-  //         id: doc.id,
-  //         ...doc.data(),
-  //       })
-  //     })
-  //   })
-  // },
 }
 </script>
 

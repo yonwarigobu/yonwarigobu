@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="infoContainer2">
-        <img class="info" v-if="img_url" :src="img_url" />s
+        <img :src="url" />
         <div class="info">感想:</div>
         <div class="inputInfo">{{ tweet.kansou }}</div>
       </div>
@@ -40,6 +40,7 @@
 import HeaderApp from "@/components/HeaderApp.vue"
 import { collection, getDocs } from "firebase/firestore"
 import { db } from "../firebase.js"
+import HomeApp from "@/views/HomeApp.vue"
 
 export default {
   name: "HomeApp",
@@ -51,6 +52,7 @@ export default {
     return {
       feedback: "",
       tweetArray: [],
+      url: HomeApp,
     }
   },
   created() {
