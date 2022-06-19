@@ -47,6 +47,22 @@ export default {
     HeaderApp,
   },
 
+  mounted() {
+    this.$router.beforeEach((to, from, next) => {
+      console.log("global:beforeEach")
+      next()
+    })
+    this.$router.beforeResolve((to, from, next) => {
+      console.log("global:beforeResolve")
+      next()
+    })
+    /*this.$router.afterEach((to, from, next) => {
+      setTimeout(() => {
+        console.log("global:afterEach")
+      }, 800)
+    })*/
+  },
+
   data() {
     return {
       feedback: "",

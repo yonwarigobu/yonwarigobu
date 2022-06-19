@@ -10,6 +10,11 @@ const routes = [
     path: "/home",
     name: "HomeApp",
     component: HomeApp,
+    beforeEnter: (to, from, next) => {
+      // このタイミングで実行したい何らかの処理
+      console.log("component:beforeRouteEnter")
+      next() // パイプラインの次のフックに移動する。
+    },
   },
   {
     path: "/logout",
@@ -20,6 +25,11 @@ const routes = [
     path: "/post",
     name: "post",
     component: PostApp,
+    beforeEnter: (to, from, next) => {
+      // このタイミングで実行したい何らかの処理
+      console.log("component:beforeRouteEnter")
+      next() // パイプラインの次のフックに移動する。
+    },
   },
   {
     path: "/mypage",
@@ -30,6 +40,11 @@ const routes = [
     path: "/",
     name: "LoginApp",
     component: LoginApp,
+    beforeEnter: (to, from, next) => {
+      // このタイミングで実行したい何らかの処理
+
+      next() // パイプラインの次のフックに移動する。
+    },
   },
 ]
 
