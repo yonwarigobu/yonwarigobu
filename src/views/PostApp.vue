@@ -16,9 +16,6 @@
       v-model="people"
       placeholder="人数を入力してね！"
     >
-     <option value="aaa">1</option>
-      <option value="iii">2</option>
-      <option value="uuu">3</option>
     </textarea>
     <textarea
       class="form__textarea"
@@ -52,7 +49,9 @@
     />
     <input type="file" @change="fileUpload" />
     <div class="form__buttons">
-      <button v-on:click="postTweet" class="form__submit-button">投稿</button>
+      <button v-on:click="postTweet" class="form__submit-button">
+        投稿する！
+      </button>
     </div>
   </div>
 </template>
@@ -149,9 +148,16 @@ export default {
 }
 .form__submit-button {
   margin: 0 auto;
-  width: 80px;
-  height: 40px;
+  width: 100px;
+  height: 50px;
   border-radius: 10px 10px 10px 10px;
-  background-color: #ccccff;
+  background-color: #e1e8e0;
+}
+.form__textarea {
+  margin: 0 auto;
+  width: 260px;
+  height: 60px;
+  border-radius: 3px 3px 3px 3px;
+  background-color: #e1e8e0;
 }
 </style>
