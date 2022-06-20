@@ -15,15 +15,12 @@ import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth"
 export default {
   name: "LoginApp",
   beforeRouteEnter(to, form, next) {
-    // このタイミングで実行したい何らかの処理
     next()
   },
   beforeRouteUpdate(to, form, next) {
-    // このタイミングで実行したい何らかの処理
     next()
   },
   beforeRouteLeave(to, form, next) {
-    // このタイミングで実行したい何らかの処理
     next()
   },
   data() {},
@@ -54,11 +51,13 @@ export default {
   background-position: center;
 }
 .login {
-  background-color: aqua;
+  /*background-color: aqua;*/
   animation: fade;
 }
 
 h1 {
+  padding: 0;
+  border: 0;
   font-size: 6rem;
   font-family: "M PLUS Rounded 1c", sans-serif;
 }

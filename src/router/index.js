@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from "vue-router"
 import HomeApp from "../views/HomeApp.vue"
 import LoginApp from "../components/LoginHome.vue"
 import PostApp from "../views/PostApp.vue"
-import MypageApp from "../views/MypageApp.vue"
 import LogoutApp from "../views/LogoutApp.vue"
 
 const routes = [
@@ -11,9 +10,8 @@ const routes = [
     name: "HomeApp",
     component: HomeApp,
     beforeEnter: (to, from, next) => {
-      // このタイミングで実行したい何らかの処理
-      console.log("component:beforeRouteEnter")
-      next() // パイプラインの次のフックに移動する。
+      console.log("router: beforeRouteEnter")
+      next()
     },
   },
   {
@@ -26,31 +24,26 @@ const routes = [
     name: "post",
     component: PostApp,
     beforeEnter: (to, from, next) => {
-      // このタイミングで実行したい何らかの処理
-      console.log("component:beforeRouteEnter")
-      next() // パイプラインの次のフックに移動する。
+      console.log("router: beforeRouteEnter")
+      next()
     },
-  },
-  {
-    path: "/mypage",
-    name: "MypageApp",
-    component: MypageApp,
   },
   {
     path: "/",
     name: "LoginApp",
     component: LoginApp,
-    beforeEnter: (to, from, next) => {
-      // このタイミングで実行したい何らかの処理
-
-      next() // パイプラインの次のフックに移動する。
-    },
   },
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+})
+
+router.beforeEach((to, from, next) => {
+  console.log("global: beforeEach")
+
+  next()
 })
 
 export default router
