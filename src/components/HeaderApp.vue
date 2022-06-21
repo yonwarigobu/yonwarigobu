@@ -1,11 +1,15 @@
 <template>
-  <h1>旅シェア</h1>
-  <div id="nav">
-    <router-link class="menu" to="/home">HOME</router-link>
+  <div class="header-container">
+    <div class="header-img-container">
+      <img class="header-img" src="../assets/tabiLogo.png" alt="" />
+    </div>
+    <div id="nav">
+      <router-link class="menu" to="/home">HOME</router-link>
 
-    <router-link class="menu" to="/post">POST</router-link>
-    <!-- <router-link to="/mypage">Mypage</router-link>| -->
-    <router-link class="menu" to="/logout">LOGOUT</router-link>
+      <router-link class="menu" to="/post">POST</router-link>
+      <!-- <router-link to="/mypage">Mypage</router-link>| -->
+      <router-link class="menu" to="/logout">LOGOUT</router-link>
+    </div>
   </div>
 </template>
 
@@ -20,11 +24,25 @@
   color: #2c3e50;
 }
 
-h2 {
+.header-container {
+}
+
+.header-img-container {
+  text-align: center;
+  /* background-color: #00b5ad; */
+}
+
+.header-img {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  height: 10%;
+  width: 10%;
+  /* background-color: aqua; */
 }
 
 #nav {
   padding: 30px;
+  margin-left: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;

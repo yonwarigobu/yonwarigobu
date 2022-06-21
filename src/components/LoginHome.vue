@@ -2,8 +2,12 @@
   <div class="background">
     <transition appear>
       <div v-if="show" class="login">
-        <h1>旅シェア</h1>
-        <button class="button" @click="googleLogin">Googleでログイン</button>
+        <div class="img-container">
+          <img class="img" src="../assets/tabiLogo.png" alt="" />
+        </div>
+        <div class="button-container">
+          <button class="button" @click="googleLogin">Googleでログイン</button>
+        </div>
       </div>
     </transition>
   </div>
@@ -52,7 +56,7 @@ body {
   background-position: center;
 }
 .login {
-  padding-top: 8rem;
+  padding-top: 4rem;
 }
 
 h1 {
@@ -63,9 +67,25 @@ h1 {
   font-family: "M PLUS Rounded 1c", sans-serif;
 }
 
+.img-container {
+  /*background-color: aqua;*/
+}
+
+.img {
+  width: 25%;
+  height: 25%;
+  /*background-color: #fff;*/
+  text-align: center;
+}
+
+.button-container {
+  padding-top: 5rem;
+  /*background-color: aquamarine;*/
+}
+
 .button {
   font-family: "Noto Sans JP";
-  font-size: 1.7rem;
+  font-size: 1.9rem;
   font-weight: 600;
   color: #fff;
   padding: 15px;
