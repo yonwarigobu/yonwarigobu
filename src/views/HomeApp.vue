@@ -36,7 +36,6 @@
   </div>
 </template>
 <script>
-// @ is an alias to /src
 import HeaderApp from "@/components/HeaderApp.vue"
 import { collection, getDocs } from "firebase/firestore"
 import { db } from "../firebase.js"
