@@ -24,13 +24,15 @@
           期間：<span class="inputInfo">{{ tweet.kikan }}</span>
         </div>
         <div class="info">
-          季節：<span class="kansouInfo">{{ tweet.season }}</span>
+          季節：<span class="inputInfo">{{ tweet.season }}</span>
         </div>
       </div>
       <div class="infoContainer2">
         <div class="info">感想:</div>
-        <img class="info" :src="tweet.url" />
         <div class="inputInfo">{{ tweet.kansou }}</div>
+        <div class="inputInfo">
+          <img class="image" :src="tweet.url" />
+        </div>
       </div>
     </div>
   </div>
@@ -85,6 +87,7 @@ export default {
   width: 40%;
 }
 .infoContainer2 {
+  position: relative;
   padding: 20px;
   width: 60%;
 }
@@ -95,16 +98,16 @@ export default {
   text-align: left;
   font-weight: 600;
 }
+.image {
+  left: 200px;
+  width: 70%;
+  height: 70%;
+}
+
 .inputInfo {
   top: 10px;
   left: 200px;
   margin: 20px;
-  text-align: left;
-  font-weight: 200;
-}
-.kansouInfo {
-  left: 200px;
-  margin-bottom: 20px;
   text-align: left;
   font-weight: 200;
 }
