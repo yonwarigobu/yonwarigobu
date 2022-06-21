@@ -45,14 +45,24 @@
       v-model="kansou"
       placeholder="その他、旅行などの感想を入力してね！"
     />
-    <input type="file" @change="fileUpload" />
+    <input type="file" ref="postImage" @change="uploadFile" />
     <div class="form__buttons">
       <button v-on:click="postTweet" class="form__submit-button">投稿</button>
     </div>
+    <div v-if="url">
+      <img :src="url" />
+    </div>
+    <div>{{ url }}</div>
   </div>
 </template>
 
 <script>
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage"
 import { collection, addDoc } from "firebase/firestore"
 import { db } from "../firebase"
 import HeaderApp from "@/components/HeaderApp.vue"
@@ -72,67 +82,56 @@ export default {
       relationships: "",
       season: "",
       kikan: "",
-
       tweets: [],
+      url: "",
     }
   },
   methods: {
     postTweet() {
-      const tweet = {
-        kansou: this.kansou,
+      const file = this.$refs.postImage.files[0]
+      const storage = getStorage()
+      const storageRef = ref(storage, file.name)
+      const uploadTask = uploadBytesResumable(storageRef, file)
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          console.log("Upload is " + progress + "% done")
+        },
+        (error) => {
+          console.log(error)
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            console.log("File available at", downloadURL)
+            addDoc(collection(db, "tweets"), {
+              url: downloadURL,
+              kansou: this.kansou,
 
-        money: this.money + "円",
+              money: this.money + "円",
 
-        place: this.place,
+              place: this.place,
 
-        people: this.people + "人",
+              people: this.people + "人",
 
-        purpose: this.purpose,
+              purpose: this.purpose,
 
-        relationships: this.relationships,
+              relationships: this.relationships,
 
-        season: this.season,
+              season: this.season,
 
-        kikan: this.kikan,
-      }
-      addDoc(collection(db, "tweets"), tweet).then((ref) => {
-        this.tweets.push({
-          id: ref.id,
-          ...tweet,
-        })
-      })
+              kikan: this.kikan,
+            })
+          })
+        }
+      )
+    },
+    uploadFile() {
+      const file = this.$refs.postImage.files[0]
+      this.url = URL.createObjectURL(file)
     },
   },
-  /**
-  //    * イメージ画像をアップロード.
-  //    */
-  //   fileUpload(event: any) {
-  //     //アップロードしたい画像の情報を取得。
-  //     const file = event.target.files[0]
-  //     //画像ファイルのURLを取得。
-  //     this.img_url = URL.createObjectURL(file)
-  //     //"files"は③で作成したフォルダ名
-  //     //Firebase storageに画像ファイルを送信。
-  //     const storageRef = ref(storage, "files/" + file.name)
-
-  //     //Firebaseにデータを適切に送るために必要なコード
-  //     uploadBytes(storageRef, file).then((snapshot) => {
-  //       console.log("blobかfileをアップロード", snapshot)
-  //     })
-  //   },
-  // },
-
-  // /* 変更点３ */
-  // created() {
-  //   getDocs(collection(db, "tweets")).then((snapshot) => {
-  //     snapshot.forEach((doc) => {
-  //       this.tweets.push({
-  //         id: doc.id,
-  //         ...doc.data(),
-  //       })
-  //     })
-  //   })
-  // },
 }
 </script>
 
