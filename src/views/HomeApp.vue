@@ -28,8 +28,8 @@
         </div>
       </div>
       <div class="infoContainer2">
-        <img class="info" v-if="img_url" :src="img_url" />
         <div class="info">感想:</div>
+        <img class="info" :src="tweet.url" />
         <div class="inputInfo">{{ tweet.kansou }}</div>
       </div>
     </div>
