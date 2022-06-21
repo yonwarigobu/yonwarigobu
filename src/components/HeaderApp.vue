@@ -1,4 +1,5 @@
 <template>
+  <h1>旅シェア</h1>
   <div id="nav">
     <router-link class="menu" to="/home">HOME</router-link>
 
@@ -16,7 +17,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  /* color: #2c3e50;*/
+  color: #2c3e50;
+}
+
+h2 {
 }
 
 #nav {
@@ -28,21 +32,27 @@
 
 #nav a {
   font-weight: bold;
-  /*color: #2c3e50;*/
+  color: #2c3e50;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#nav a:hover {
+  color: #00b5ad;
+  font-weight: bold;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #2c3e50;
 }
 
 .menu {
-  font-size: 2rem;
+  font-size: 1.5em;
   text-decoration: none;
   padding: 0 4em;
   display: block;
 }
 
-.menu:hover {
+/*.menu:hover {
   background-color: #00b5ad;
-}
+}*/
 </style>

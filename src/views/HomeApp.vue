@@ -40,27 +40,11 @@
 import HeaderApp from "@/components/HeaderApp.vue"
 import { collection, getDocs } from "firebase/firestore"
 import { db } from "../firebase.js"
-
+import { getAuth, onAuthStateChanged } from "firebase/auth"
 export default {
   name: "HomeApp",
   components: {
     HeaderApp,
-  },
-
-  mounted() {
-    this.$router.beforeEach((to, from, next) => {
-      console.log("global:beforeEach")
-      next()
-    })
-    this.$router.beforeResolve((to, from, next) => {
-      console.log("global:beforeResolve")
-      next()
-    })
-    /*this.$router.afterEach((to, from, next) => {
-      setTimeout(() => {
-        console.log("global:afterEach")
-      }, 800)
-    })*/
   },
 
   data() {
@@ -74,6 +58,15 @@ export default {
       snapshot.forEach((doc) => {
         this.tweetArray.push({ id: doc.id, ...doc.data() })
       })
+    })
+    const auth = getAuth()
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log(user)
+      } else {
+        console.log("notuser")
+        this.$router.push("/")
+      }
     })
   },
 }

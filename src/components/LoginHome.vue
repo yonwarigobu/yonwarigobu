@@ -14,15 +14,6 @@ import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth"
 
 export default {
   name: "LoginApp",
-  beforeRouteEnter(to, form, next) {
-    next()
-  },
-  beforeRouteUpdate(to, form, next) {
-    next()
-  },
-  beforeRouteLeave(to, form, next) {
-    next()
-  },
 
   data() {
     return {
@@ -48,22 +39,27 @@ export default {
 }
 </script>
 <style>
+body {
+  margin: 0;
+}
 .background {
   width: 100%;
   height: 100vh;
+  margin: 0px;
   background-image: url(../assets/Loginimg.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 .login {
-  /*background-color: aqua;*/
+  padding-top: 8rem;
 }
 
 h1 {
+  margin-top: 0;
   padding: 0;
   border: 0;
-  font-size: 6rem;
+  font-size: 6em;
   font-family: "M PLUS Rounded 1c", sans-serif;
 }
 

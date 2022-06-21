@@ -56,6 +56,7 @@
 import { collection, addDoc } from "firebase/firestore"
 import { db } from "../firebase"
 import HeaderApp from "@/components/HeaderApp.vue"
+import { getAuth, onAuthStateChanged } from "firebase/auth"
 
 export default {
   components: {
@@ -133,6 +134,18 @@ export default {
   //     })
   //   })
   // },
+
+  created() {
+    const auth = getAuth()
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log(user)
+      } else {
+        console.log("notuser")
+        this.$router.push("/")
+      }
+    })
+  },
 }
 </script>
 

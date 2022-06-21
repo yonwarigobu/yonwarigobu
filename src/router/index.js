@@ -9,10 +9,6 @@ const routes = [
     path: "/home",
     name: "HomeApp",
     component: HomeApp,
-    beforeEnter: (to, from, next) => {
-      console.log("router: beforeRouteEnter")
-      next()
-    },
   },
   {
     path: "/logout",
@@ -23,10 +19,6 @@ const routes = [
     path: "/post",
     name: "post",
     component: PostApp,
-    beforeEnter: (to, from, next) => {
-      console.log("router: beforeRouteEnter")
-      next()
-    },
   },
   {
     path: "/",
@@ -38,12 +30,6 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-})
-
-router.beforeEach((to, from, next) => {
-  console.log("global: beforeEach")
-
-  next()
 })
 
 export default router
