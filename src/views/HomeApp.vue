@@ -28,8 +28,8 @@
         </div>
       </div>
       <div class="infoContainer2">
-        <img :src="url" />
         <div class="info">感想:</div>
+        <img :src="url" />
         <div class="inputInfo">{{ tweet.kansou }}</div>
       </div>
     </div>
