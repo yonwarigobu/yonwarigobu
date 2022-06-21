@@ -15,12 +15,17 @@ export default {
       msg: "ログアウト",
     }
   },
-  methods: {
+  created: function () {
+    const auth = getAuth()
+    signOut(auth)
+    this.$router.push("/")
+  },
+}
+/*methods: {
     googleSignOut() {
       const auth = getAuth()
       signOut(auth)
-      this.$router.push("/")
+      this.$router.
     },
-  },
-}
+  },*/
 </script>

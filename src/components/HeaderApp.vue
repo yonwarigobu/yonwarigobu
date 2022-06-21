@@ -1,10 +1,11 @@
 <template>
+  <h1>旅シェア</h1>
   <div id="nav">
-    <router-link to="/home">Home</router-link> |
+    <router-link class="menu" to="/home">HOME</router-link>
 
-    <router-link to="/post">Post</router-link> |
+    <router-link class="menu" to="/post">POST</router-link>
     <!-- <router-link to="/mypage">Mypage</router-link>| -->
-    <router-link to="/logout">Logout</router-link>
+    <router-link class="menu" to="/logout">LOGOUT</router-link>
   </div>
 </template>
 
@@ -19,16 +20,39 @@
   color: #2c3e50;
 }
 
+h2 {
+}
+
 #nav {
   padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #nav a {
   font-weight: bold;
   color: #2c3e50;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#nav a:hover {
+  color: #00b5ad;
+  font-weight: bold;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #2c3e50;
 }
+
+.menu {
+  font-size: 1.5em;
+  text-decoration: none;
+  padding: 0 4em;
+  display: block;
+}
+
+/*.menu:hover {
+  background-color: #00b5ad;
+}*/
 </style>
