@@ -1,11 +1,11 @@
 <template>
   <div class="background">
-    <div class="login">
-      <h1>旅シェア</h1>
-      <button class="button fadeIn" @click="googleLogin">
-        Googleでログイン
-      </button>
-    </div>
+    <transition appear>
+      <div v-if="show" class="login">
+        <h1>旅シェア</h1>
+        <button class="button" @click="googleLogin">Googleでログイン</button>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -23,7 +23,13 @@ export default {
   beforeRouteLeave(to, form, next) {
     next()
   },
-  data() {},
+
+  data() {
+    return {
+      show: true,
+    }
+  },
+
   methods: {
     googleLogin() {
       const provider = new GoogleAuthProvider()
@@ -52,7 +58,6 @@ export default {
 }
 .login {
   /*background-color: aqua;*/
-  animation: fade;
 }
 
 h1 {
@@ -75,12 +80,15 @@ h1 {
   box-shadow: 0 3px 4px #B384FF(0, 0, 0, 0.3);
 }
 
-/*.fadeIn {
-  animation-name: fadeInAnime;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
+.v-enter {
   opacity: 0;
-}*/
+}
+.v-enter-to {
+  opacity: 1;
+}
+.v-enter-active {
+  transition: opacity 1s;
+}
 
 .button:hover {
   margin-top: 3px;
