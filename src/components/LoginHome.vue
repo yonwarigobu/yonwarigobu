@@ -68,19 +68,16 @@ h1 {
 }
 
 .img-container {
-  /*background-color: aqua;*/
 }
 
 .img {
   width: 25%;
   height: 25%;
-  /*background-color: #fff;*/
   text-align: center;
 }
 
 .button-container {
   padding-top: 5rem;
-  /*background-color: aquamarine;*/
 }
 
 .button {

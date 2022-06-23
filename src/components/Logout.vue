@@ -21,11 +21,4 @@ export default {
     this.$router.push("/")
   },
 }
-/*methods: {
-    googleSignOut() {
-      const auth = getAuth()
-      signOut(auth)
-      this.$router.
-    },
-  },*/
 </script>

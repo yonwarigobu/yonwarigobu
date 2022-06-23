@@ -1,12 +1,10 @@
 <template>
   <HeaderApp></HeaderApp>
-  <div class="post">
-    <h1>投稿ページ</h1>
-  </div>
+  <div class="post"></div>
 
   <div class="form__wrapper">
     <select class="form__textarea" v-model="place">
-      <option disabled value="">--場所を入力してね！--</option>
+      <option disabled value="">-- 場所を入力してね！ --</option>
       <option value="北海道">北海道</option>
       <option value="青森">青森</option>
       <option value="岩手">神奈川</option>
@@ -67,8 +65,8 @@
       <option value="7人">7人</option>
       <option value="8人">8人</option>
       <option value="9人">9人</option>
-      <option value="10人以上">10人以上</option>
-    </select>
+      <option value="10人以上">10人以上</option></select
+    ><br />
 
     <select class="form__textarea" v-model="relationships">
       <option disabled value="">
@@ -113,8 +111,8 @@
       <option value="4泊5日">4泊5日</option>
       <option value="5泊6日">5泊6日</option>
       <option value="6泊7日">6泊7日</option>
-      <option value="7泊以上">7泊以上</option>
-    </select>
+      <option value="7泊以上">7泊以上</option></select
+    ><br />
     <textarea
       class="form__textarea"
       v-model="purpose"
@@ -130,7 +128,10 @@
       v-model="kansou"
       placeholder="その他、旅行などの感想を入力してね！(手入力)"
     />
-    <input type="file" ref="postImage" @change="uploadFile" />
+    <div>
+      <h4>写真を入れてね↓</h4>
+      <input type="file" ref="postImage" @change="uploadFile" />
+    </div>
     <div class="form__buttons">
       <button v-on:click="postTweet" class="form__submit-button">
         投稿する！
@@ -236,6 +237,9 @@ export default {
 </script>
 
 <style scoped>
+.post {
+  margin-top: 4rem;
+}
 .home__wrapper {
   margin: 0 auto;
   max-width: 600px;
@@ -243,16 +247,29 @@ export default {
 }
 .form__submit-button {
   margin: 0 auto;
-  width: 100px;
-  height: 50px;
+  width: 15rem;
+  height: 4rem;
   border-radius: 10px 10px 10px 10px;
   background-color: #e1e8e0;
+  margin-top: 3rem;
+  font-size: 1.6rem;
 }
+
+.form__submit-button:hover {
+  background-color: #99cc99;
+  font-size: 1.8rem;
+}
+
 .form__textarea {
   margin: 0 auto;
   width: 260px;
   height: 60px;
   border-radius: 3px 3px 3px 3px;
   background-color: #e1e8e0;
+  margin: 1rem;
+}
+
+h4 {
+  margin: 0;
 }
 </style>

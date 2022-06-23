@@ -81,10 +81,14 @@ export default {
   position: relative;
   background-color: #edffbe;
   margin: 100px;
+  border-radius: 20px;
+  border: solid;
 }
 .infoContainer1 {
   padding: 20px;
   width: 40%;
+  padding-top: 4rem;
+  padding-left: 5rem;
 }
 .infoContainer2 {
   position: relative;
